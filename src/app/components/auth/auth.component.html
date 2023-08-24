@@ -1,2 +1,24 @@
-<p>auth works!</p>
-<a routerLink="/posts">test</a>
+<div>
+    <form [formGroup]="formGroup" (change)="onFormChange()" (ngSubmit)="onSubmit()">
+        <h1>Регистрация</h1>
+        <mat-form-field color="primary">
+            <mat-label>Логин</mat-label>
+            <input matInput formControlName="login">
+            <mat-error *ngIf="formGroup.hasError('required', 'login')">Это поле обязательно</mat-error>
+            <mat-error *ngIf="formGroup.hasError('minlength', 'login')">Минимальное количество символов 4</mat-error>
+            <mat-error *ngIf="formGroup.hasError('maxlength', 'login')">Максимальное количество символов 10</mat-error>
+            <mat-error *ngIf="formGroup.hasError('pattern', 'login')">Могут быть только латинские буквы или цифры</mat-error>
+        </mat-form-field>
+    
+        <mat-form-field color="primary">
+            <mat-label>Пароль</mat-label>
+            <input matInput formControlName="password">
+            <mat-error *ngIf="formGroup.hasError('required', 'password')" color="primary" >Это поле обязательно</mat-error>
+            <mat-error *ngIf="formGroup.hasError('minlength', 'password')">Минимальное количество символов 4</mat-error>
+            <mat-error *ngIf="formGroup.hasError('maxlength', 'password')">Максимальное количество символов 10</mat-error>
+            <mat-error *ngIf="formGroup.hasError('pattern', 'password')">Могут быть только латинские буквы или цифры</mat-error>
+        </mat-form-field>
+        <mat-error color="primary" *ngIf="!formGroup.valid">{{formError}}</mat-error>
+        <button mat-raised-button color="primary" [disabled]="formGroup.invalid || !!formError">{{'Зарегистрироваться'}}</button>
+    </form>
+</div>
