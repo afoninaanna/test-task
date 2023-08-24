@@ -13,6 +13,10 @@ export class PostsService {
     }
 
     getPosts(): Observable<IPost[]> {
-        return this.http.get<IPost[]>('https://jsonplaceholder.typicode.com/posts')
+        return this.http.get<IPost[]>(`https://jsonplaceholder.typicode.com/posts`)
+    }
+
+    getPost(queryParam: number = 0): Observable<IPost> {
+        return this.http.get<IPost>(`https://jsonplaceholder.typicode.com/posts/${queryParam || ""}`)
     }
 }

@@ -1,5 +1,7 @@
+import { PostsService } from './../../services/posts.service';
 import { IPost } from './../../models/posts';
-import { Component, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'posts',
@@ -7,11 +9,22 @@ import { Component, Input } from "@angular/core";
     styleUrls: ['./posts.component.css']
 })
 
-export class PostsComponent {
-    @Input() posts: IPost[];
+export class PostsComponent implements OnInit {
     displayedColumns: string[] = ['userId', 'id', 'title', 'body'];
 
+    posts: IPost[] = [];
+
+    constructor(private postsService: PostsService, private router: Router) {
+        
+    }
+
+    ngOnInit(): void {
+        this.postsService.getPosts().subscribe(posts => {
+            this.posts = posts
+        })
+    }
+    
     clickHandle(postId: number) {
-        alert(postId)
+        this.router.navigate(['/post'], { queryParams: { id: postId }})
     }
 }

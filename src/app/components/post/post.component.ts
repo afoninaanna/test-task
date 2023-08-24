@@ -1,5 +1,7 @@
+import { PostsService } from './../../services/posts.service';
 import { IPost } from './../../models/posts';
-import { Component, Input } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'post',
@@ -7,6 +9,21 @@ import { Component, Input } from "@angular/core";
     styleUrls: ['./post.component.css']
 })
 
-export class PostComponent {
-    @Input() post: IPost
+export class PostComponent implements OnInit {
+    post: IPost
+
+    id: number
+
+    constructor(private route: ActivatedRoute, private postsService: PostsService, private router: Router) {
+
+    }
+
+    ngOnInit(): void {
+        this.route.queryParams.subscribe(param => this.id = param.id);
+        this.postsService.getPost(this.id).subscribe(post => this.post = post);
+    }
+
+    clickHandler() {
+        this.router.navigate(['/posts'])
+    }
 }

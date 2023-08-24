@@ -1,5 +1,6 @@
-<mat-card>
-    <mat-card-content>
+<div>
+    <mat-card>
+        <mat-card-content>
             <p>
                 <b>UserId:</b> {{ post.userId }}
             </p>
@@ -12,6 +13,7 @@
             <p>
                 <b>Body:</b> {{ post.body }}
             </p>
-    </mat-card-content>
-    <button mat-raised-button color="basic">Вернуться к постам</button>
-</mat-card>
+        </mat-card-content>
+        <button mat-raised-button color="basic" (click)="clickHandler()">Вернуться к постам</button>
+    </mat-card>
+</div>
