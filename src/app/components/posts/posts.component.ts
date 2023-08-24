@@ -10,4 +10,8 @@ import { Component, Input } from "@angular/core";
 export class PostsComponent {
     @Input() posts: IPost[];
     displayedColumns: string[] = ['userId', 'id', 'title', 'body'];
+
+    clickHandle(postId: number) {
+        alert(postId)
+    }
 }
