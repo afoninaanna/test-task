@@ -24,7 +24,7 @@ export class PostsComponent implements OnInit {
         })
     }
     
-    clickHandle(postId: number) {
+    clickHandler(postId: number): void {
         this.router.navigate(['/post'], { queryParams: { id: postId }})
     }
 }

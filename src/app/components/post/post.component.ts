@@ -23,7 +23,7 @@ export class PostComponent implements OnInit {
         this.postsService.getPost(this.id).subscribe(post => this.post = post);
     }
 
-    clickHandler() {
+    clickHandler(): void {
         this.router.navigate(['/posts'])
     }
 }
