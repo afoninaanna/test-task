@@ -20,7 +20,7 @@
             <mat-error *ngIf="formGroup.hasError('pattern', 'password')">Могут быть только латинские буквы или цифры</mat-error>
         </mat-form-field>
         <mat-error color="primary" *ngIf="!formGroup.valid">{{formError}}</mat-error>
-        <button mat-raised-button color="primary" [disabled]="formGroup.invalid || !!formError">Зарегистрироваться и Войти</button>
+        <button mat-raised-button color="primary" [disabled]="formGroup.invalid || !!formError">Зарегистрироваться</button>
     </form>
     <ng-template #login>
         <button mat-raised-button color="primary" (click)="logIn()">Войти</button>
