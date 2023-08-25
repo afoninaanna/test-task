@@ -6,3 +6,17 @@ table {
 th {
     font-size: 18px;
 }
+
+div {
+    background-color: aliceblue;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 30px;
+}
+
+button {
+    width: 200px;
+    border-radius: 25px;
+}

@@ -1,5 +1,6 @@
 <div>
-    <form [formGroup]="formGroup" (change)="onFormChange()" (ngSubmit)="onSubmit()">
+    <form [formGroup]="formGroup" (change)="onFormChange()" (ngSubmit)="onSubmit()"
+    *ngIf="!isLogged; else login">
         <h1>Регистрация</h1>
         <mat-form-field color="primary">
             <mat-label>Логин</mat-label>
@@ -12,13 +13,16 @@
     
         <mat-form-field color="primary">
             <mat-label>Пароль</mat-label>
-            <input matInput formControlName="password">
+            <input matInput formControlName="password" type="password">
             <mat-error *ngIf="formGroup.hasError('required', 'password')" color="primary" >Это поле обязательно</mat-error>
             <mat-error *ngIf="formGroup.hasError('minlength', 'password')">Минимальное количество символов 4</mat-error>
             <mat-error *ngIf="formGroup.hasError('maxlength', 'password')">Максимальное количество символов 10</mat-error>
             <mat-error *ngIf="formGroup.hasError('pattern', 'password')">Могут быть только латинские буквы или цифры</mat-error>
         </mat-form-field>
         <mat-error color="primary" *ngIf="!formGroup.valid">{{formError}}</mat-error>
-        <button mat-raised-button color="primary" [disabled]="formGroup.invalid || !!formError">{{'Зарегистрироваться'}}</button>
+        <button mat-raised-button color="primary" [disabled]="formGroup.invalid || !!formError">Зарегистрироваться и Войти</button>
     </form>
+    <ng-template #login>
+        <button mat-raised-button color="primary" (click)="logIn()">Войти</button>
+    </ng-template>
 </div>

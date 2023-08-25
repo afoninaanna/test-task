@@ -1,4 +1,4 @@
-import { NotFoundComponent } from './components/not-found/not-found.component';ф
+import { NotFoundComponent } from './components/not-found/not-found.component';
 import { MaterialModule } from './modules/material.module';
 import { PostComponent } from './components/post/post.component';
 import { NgModule } from '@angular/core';

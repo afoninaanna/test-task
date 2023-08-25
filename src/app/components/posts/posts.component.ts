@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { PostsService } from './../../services/posts.service';
 import { IPost } from './../../models/posts';
 import { Component, OnInit } from "@angular/core";
@@ -14,7 +15,7 @@ export class PostsComponent implements OnInit {
 
     posts: IPost[] = [];
 
-    constructor(private postsService: PostsService, private router: Router) {
+    constructor(private postsService: PostsService, private router: Router, private authService: AuthService) {
         
     }
 
@@ -26,5 +27,10 @@ export class PostsComponent implements OnInit {
     
     clickHandler(postId: number): void {
         this.router.navigate(['/post'], { queryParams: { id: postId }})
+    }
+
+    logOut(): void {
+        this.authService.logout()
+        this.router.navigate(['/auth'], { queryParams: { allowed: false } })
     }
 }
