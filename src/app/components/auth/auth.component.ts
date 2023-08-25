@@ -34,13 +34,13 @@ export class AuthComponent implements OnInit, OnChanges {
     console.log('changes', this.isLogged);
   }
 
-  onFormChange() {
+  onFormChange(): void {
     if (this.formGroup.valid) {
       this.formError = ''
     }
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const { login, password } = this.formGroup.value;
     this.authService.registr(login, password);
     this.isLogged = true;
